@@ -1,11 +1,12 @@
 # Plaza as Industry
 
-Are you tired of your eyecandy castles, villages, or airports not having any passengers? This one-tile industry (disguised as a base game fountain or statue, set by parameter) produces and accepts passengers to give your builds the visitors they deserve.
+A small 1x1 dummy industry which does nothing but spawn farm fields. It also blends in with the farm scenery and generates a small amount of passengers.
+
+If you love fields and the industry set of your choice doesn't produce enough of them, just place these instead of meticulously placing NewObject fields.
 
 - Compatible with all industry sets
-- Uses the production rate and cost of FIRS hotels
-- Select its appearance as a base game fountain or statue in parameters
+- Uses baseset farm sprites
+- Select whether to create fields when generating a map
 
 ## Translations
 - English
-- German (WoelfiVW)

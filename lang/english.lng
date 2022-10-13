@@ -1,0 +1,16 @@
+##grflangid 0x01
+
+STR_GRF_NAME						:Field Spawner
+STR_GRF_DESC						:{ORANGE}A 1-tile dummy industry which generates farm fields.{}{}{BLACK}A quick and easy way to create farm fields.{}{}Coded by Emperor Jake, based on code by 2TallTyler.{}{}License: GPL v3
+STR_GENERATOR_NAME					:Fields
+
+
+STR_TOWN                            :{STRING}
+STR_STATION                         :{STRING} {STRING}
+STR_NEARBY_STATION_NAME				:Fields
+
+
+STR_PARAM_NAME_SPAWN				:Spawn at start of game
+STR_PARAM_DESC_SPAWN				:Choose whether to generate farm fields at the start of the game.
+STR_PARAM_NO_SPAWN					:No
+STR_PARAM_YES_SPAWN					:Yes

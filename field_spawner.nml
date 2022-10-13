@@ -1,0 +1,187 @@
+grf {
+	grfid: "JK\87\02";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESC);
+	version: 3;
+	min_compatible_version: 0;
+	
+	param 0 {
+  graphic_switch {
+   name: string(STR_PARAM_NAME_SPAWN);
+   desc: string(STR_PARAM_DESC_SPAWN);
+   min_value: 0;
+   max_value: 1;
+   names: {
+            0: string(STR_PARAM_NO_SPAWN);
+            1: string(STR_PARAM_YES_SPAWN);
+   };
+  }
+ }
+}
+
+
+cargotable {
+	PASS
+}
+
+spritelayout spr_layout_silos {
+	ground {sprite: 2114 ;}
+	building {
+		sprite: 2115;
+		yoffset: 3;
+		xoffset: 3;
+		}
+}
+
+spritelayout spr_layout_barn {
+	ground {sprite: 2112 ;}
+	building {
+		sprite: 2113;
+		yoffset: 5;
+		xoffset: 6;
+		}
+}
+
+spritelayout spr_layout_haystack {
+	ground {sprite: 2110 ;}
+	building {
+		sprite: 2111;
+		yoffset: 0;
+		xoffset: 0;
+		}
+}
+
+spritelayout spr_layout_pigsty {
+	ground {sprite: 2116 ;}
+	building {
+		sprite: 2117;
+		yoffset: 0;
+		xoffset: 0;
+		}
+}
+
+
+/* Industry Tile Layouts */
+
+	tilelayout tile_layout_silos {
+		0, 0: 	tile_silos;
+	}
+
+	tilelayout tile_layout_barn {
+		0, 0: tile_barn;
+	}
+
+	tilelayout tile_layout_haystack {
+		0, 0: tile_haystack;
+	}
+
+	tilelayout tile_layout_pigsty {
+		0, 0: tile_pigsty;
+	}
+
+/* Tile Definitions */
+
+item(FEAT_INDUSTRYTILES, tile_silos) {
+	property {
+		substitute:         			02;
+		accepted_cargos: 				[[PASS, 8]];
+	}
+	graphics {
+		default: 						spr_layout_silos;
+		foundations: 					return CB_RESULT_FOUNDATIONS;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, tile_barn) {
+	property {
+		substitute:         			02;
+		accepted_cargos: 				[[PASS, 8]];
+	}
+	graphics {
+		default: 						spr_layout_barn;
+		foundations: 					return CB_RESULT_FOUNDATIONS;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, tile_haystack) {
+	property {
+		substitute:         			02;
+		accepted_cargos: 				[[PASS, 8]];
+	}
+	graphics {
+		default: 						spr_layout_haystack;
+		foundations: 					return CB_RESULT_FOUNDATIONS;
+	}
+}
+
+item(FEAT_INDUSTRYTILES, tile_pigsty) {
+	property {
+		substitute:         			02;
+		accepted_cargos: 				[[PASS, 8]];
+	}
+	graphics {
+		default: 						spr_layout_pigsty;
+		foundations: 					return CB_RESULT_FOUNDATIONS;
+	}
+}
+
+
+if (graphic_switch==0) {
+	item(FEAT_INDUSTRIES, field_spawner) {
+		property {
+			substitute:					0;
+			life_type:					IND_LIFE_TYPE_BLACK_HOLE;
+			cargo_types:				[
+											accept_cargo("PASS"),
+											produce_cargo("PASS",2),
+										];
+			name:						string(STR_GENERATOR_NAME);
+			nearby_station_name:		string(STR_STATION, string(STR_TOWN), string(STR_NEARBY_STATION_NAME));
+			prob_random:				0;
+			prob_in_game:				0;
+			fund_cost_multiplier:		5;
+			map_colour:					143;
+			spec_flags:					bitmask(IND_FLAG_PLANT_FIELDS_PERIODICALLY, IND_FLAG_PLANT_FIELDS_WHEN_BUILT);
+			layouts: [
+				tile_layout_silos,
+				tile_layout_barn,
+				tile_layout_haystack,
+				tile_layout_pigsty,
+				];
+		}
+		graphics {
+			monthly_prod_change:		CB_RESULT_IND_PROD_NO_CHANGE;
+			random_prod_change:			CB_RESULT_IND_PROD_NO_CHANGE;
+		}
+	}
+}
+
+if (graphic_switch==1) {
+	item(FEAT_INDUSTRIES, field_spawner) {
+		property {
+			substitute:					0;
+			life_type:					IND_LIFE_TYPE_BLACK_HOLE;
+			cargo_types:				[
+											accept_cargo("PASS"),
+											produce_cargo("PASS",2),
+										];
+			name:						string(STR_GENERATOR_NAME);
+			nearby_station_name:		string(STR_STATION, string(STR_TOWN), string(STR_NEARBY_STATION_NAME));
+			prob_random:				100;
+			prob_in_game:				0;
+			fund_cost_multiplier:		5;
+			map_colour:					143;	
+			spec_flags:					bitmask(IND_FLAG_PLANT_FIELDS_PERIODICALLY, IND_FLAG_PLANT_FIELDS_WHEN_BUILT);
+			layouts: [
+				tile_layout_silos,
+				tile_layout_barn,
+				tile_layout_haystack,
+				tile_layout_pigsty,
+				];
+		}
+		graphics {
+			monthly_prod_change:		CB_RESULT_IND_PROD_NO_CHANGE;
+			random_prod_change:			CB_RESULT_IND_PROD_NO_CHANGE;
+		}
+	}
+}
