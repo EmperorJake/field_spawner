@@ -1,4 +1,4 @@
-# Plaza as Industry
+# Field Spawner
 
 A small 1x1 dummy industry which does nothing but spawn farm fields. It also blends in with the farm scenery and generates a small amount of passengers.
 
