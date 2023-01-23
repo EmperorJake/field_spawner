@@ -2,7 +2,7 @@ grf {
 	grfid: "JK\87\02";
 	name: string(STR_GRF_NAME);
 	desc: string(STR_GRF_DESC);
-	version: 3;
+	version: 4;
 	min_compatible_version: 0;
 	
 	param 0 {
@@ -28,8 +28,8 @@ spritelayout spr_layout_silos {
 	ground {sprite: 2114 ;}
 	building {
 		sprite: 2115;
-		yoffset: 3;
-		xoffset: 3;
+		yoffset: 0;
+		xoffset: 0;
 		}
 }
 
@@ -37,8 +37,8 @@ spritelayout spr_layout_barn {
 	ground {sprite: 2112 ;}
 	building {
 		sprite: 2113;
-		yoffset: 5;
-		xoffset: 6;
+		yoffset: 0;
+		xoffset: 0;
 		}
 }
 
@@ -133,7 +133,7 @@ if (graphic_switch==0) {
 			life_type:					IND_LIFE_TYPE_BLACK_HOLE;
 			cargo_types:				[
 											accept_cargo("PASS"),
-											produce_cargo("PASS",2),
+											//produce_cargo("PASS",2),
 										];
 			name:						string(STR_GENERATOR_NAME);
 			nearby_station_name:		string(STR_STATION, string(STR_TOWN), string(STR_NEARBY_STATION_NAME));
@@ -163,7 +163,7 @@ if (graphic_switch==1) {
 			life_type:					IND_LIFE_TYPE_BLACK_HOLE;
 			cargo_types:				[
 											accept_cargo("PASS"),
-											produce_cargo("PASS",2),
+											//produce_cargo("PASS",2),
 										];
 			name:						string(STR_GENERATOR_NAME);
 			nearby_station_name:		string(STR_STATION, string(STR_TOWN), string(STR_NEARBY_STATION_NAME));
