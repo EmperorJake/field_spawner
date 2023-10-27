@@ -1,7 +1,7 @@
 ##grflangid 0x01
 
-STR_GRF_NAME						:Field Spawner
-STR_GRF_DESC						:{ORANGE}A 1-tile dummy industry which generates farm fields.{}{}{BLACK}A quick and easy way to create farm fields.{}{}Coded by Emperor Jake, based on code by 2TallTyler.{}{}License: GPL v3
+STR_GRF_NAME						:Field Spawner 1.0.1
+STR_GRF_DESC						:{ORANGE}A 1-tile dummy industry which generates farm fields.{}{}{BLACK}A quick and easy way to create farm fields.{}{}{BLACK}Includes spawnrate parameters.{}{}Coded by Emperor Jake, based on code by 2TallTyler.{}{}License: GPL v3
 STR_GENERATOR_NAME					:Fields
 
 
@@ -10,7 +10,5 @@ STR_STATION                         :{STRING} {STRING}
 STR_NEARBY_STATION_NAME				:Fields
 
 
-STR_PARAM_NAME_SPAWN				:Spawn at start of game
-STR_PARAM_DESC_SPAWN				:Choose whether to generate farm fields at the start of the game.
-STR_PARAM_NO_SPAWN					:No
-STR_PARAM_YES_SPAWN					:Yes
+STR_PARAM_NAME_SPAWN				:Spawnrate
+STR_PARAM_DESC_SPAWN				:Probability value to generate farm fields at the start of the game. Lower numbers will decrease the spawnrate. Set to 0 to disable. Default: 100.
