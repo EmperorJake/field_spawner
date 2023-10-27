@@ -2,19 +2,16 @@ grf {
 	grfid: "JK\87\02";
 	name: string(STR_GRF_NAME);
 	desc: string(STR_GRF_DESC);
-	version: 4;
-	min_compatible_version: 0;
+	version: 5;
+	min_compatible_version: 5;
 	
 	param 0 {
-  graphic_switch {
+  spawn_rate {
    name: string(STR_PARAM_NAME_SPAWN);
    desc: string(STR_PARAM_DESC_SPAWN);
    min_value: 0;
-   max_value: 1;
-   names: {
-            0: string(STR_PARAM_NO_SPAWN);
-            1: string(STR_PARAM_YES_SPAWN);
-   };
+   max_value: 255;
+   def_value: 100;
   }
  }
 }
@@ -126,62 +123,31 @@ item(FEAT_INDUSTRYTILES, tile_pigsty) {
 }
 
 
-if (graphic_switch==0) {
-	item(FEAT_INDUSTRIES, field_spawner) {
-		property {
-			substitute:					0;
-			life_type:					IND_LIFE_TYPE_BLACK_HOLE;
-			cargo_types:				[
-											accept_cargo("PASS"),
-											//produce_cargo("PASS",2),
-										];
-			name:						string(STR_GENERATOR_NAME);
-			nearby_station_name:		string(STR_STATION, string(STR_TOWN), string(STR_NEARBY_STATION_NAME));
-			prob_random:				0;
-			prob_in_game:				0;
-			fund_cost_multiplier:		5;
-			map_colour:					143;
-			spec_flags:					bitmask(IND_FLAG_PLANT_FIELDS_PERIODICALLY, IND_FLAG_PLANT_FIELDS_WHEN_BUILT);
-			layouts: [
-				tile_layout_silos,
-				tile_layout_barn,
-				tile_layout_haystack,
-				tile_layout_pigsty,
-				];
-		}
-		graphics {
-			monthly_prod_change:		CB_RESULT_IND_PROD_NO_CHANGE;
-			random_prod_change:			CB_RESULT_IND_PROD_NO_CHANGE;
-		}
-	}
-}
 
-if (graphic_switch==1) {
-	item(FEAT_INDUSTRIES, field_spawner) {
-		property {
-			substitute:					0;
-			life_type:					IND_LIFE_TYPE_BLACK_HOLE;
-			cargo_types:				[
-											accept_cargo("PASS"),
-											//produce_cargo("PASS",2),
-										];
-			name:						string(STR_GENERATOR_NAME);
-			nearby_station_name:		string(STR_STATION, string(STR_TOWN), string(STR_NEARBY_STATION_NAME));
-			prob_random:				100;
-			prob_in_game:				0;
-			fund_cost_multiplier:		5;
-			map_colour:					143;	
-			spec_flags:					bitmask(IND_FLAG_PLANT_FIELDS_PERIODICALLY, IND_FLAG_PLANT_FIELDS_WHEN_BUILT);
-			layouts: [
-				tile_layout_silos,
-				tile_layout_barn,
-				tile_layout_haystack,
-				tile_layout_pigsty,
-				];
-		}
-		graphics {
-			monthly_prod_change:		CB_RESULT_IND_PROD_NO_CHANGE;
-			random_prod_change:			CB_RESULT_IND_PROD_NO_CHANGE;
-		}
+item(FEAT_INDUSTRIES, field_spawner) {
+	property {
+		substitute:					0;
+		life_type:					IND_LIFE_TYPE_BLACK_HOLE;
+		cargo_types:				[
+										accept_cargo("PASS"),
+										//produce_cargo("PASS",2),
+									];
+		name:						string(STR_GENERATOR_NAME);
+		nearby_station_name:		string(STR_STATION, string(STR_TOWN), string(STR_NEARBY_STATION_NAME));
+		prob_random:				param[0];
+		prob_in_game:				0;
+		fund_cost_multiplier:		5;
+		map_colour:					143;
+		spec_flags:					bitmask(IND_FLAG_PLANT_FIELDS_PERIODICALLY, IND_FLAG_PLANT_FIELDS_WHEN_BUILT);
+		layouts: [
+			tile_layout_silos,
+			tile_layout_barn,
+			tile_layout_haystack,
+			tile_layout_pigsty,
+			];
+	}
+	graphics {
+		monthly_prod_change:		CB_RESULT_IND_PROD_NO_CHANGE;
+		random_prod_change:			CB_RESULT_IND_PROD_NO_CHANGE;
 	}
 }
