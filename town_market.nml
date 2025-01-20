@@ -1,0 +1,76 @@
+grf {
+	grfid: "JK\87\A1";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESC);
+	version: 1;
+	min_compatible_version: 0;
+	
+	
+}
+
+
+cargotable {
+	PASS, MAIL, FOOD, GOOD
+}
+
+spritelayout spr_layout_market {
+	ground {sprite: 1420 ;}
+	building {
+		sprite: 1475;
+		yoffset: 0;
+		xoffset: 0;
+		}
+}
+
+
+
+
+/* Industry Tile Layouts */
+
+	tilelayout tile_layout_market {
+		0, 0: 	tile_market;
+	}
+
+
+/* Tile Definitions */
+
+item(FEAT_INDUSTRYTILES, tile_market) {
+	property {
+		substitute:         			02;
+		accepted_cargos: 				[[PASS, 8], [MAIL, 8], [FOOD, 8], [GOOD, 8]];
+	}
+	graphics {
+		default: 						spr_layout_market;
+		foundations: 					return CB_RESULT_FOUNDATIONS;
+	}
+}
+
+
+
+
+	item(FEAT_INDUSTRIES, market) {
+		property {
+			substitute:					0;
+			life_type:					IND_LIFE_TYPE_BLACK_HOLE;
+			cargo_types:				[
+											accept_cargo("PASS"),
+											accept_cargo("MAIL"),
+											accept_cargo("FOOD"),
+											accept_cargo("GOOD")
+											//produce_cargo("PASS",2),
+										];
+			name:						string(STR_GENERATOR_NAME);
+			nearby_station_name:		string(STR_STATION, string(STR_TOWN), string(STR_NEARBY_STATION_NAME));
+			prob_random:				0;
+			prob_in_game:				0;
+			fund_cost_multiplier:		5;
+			map_colour:					143;
+			layouts: [
+				tile_layout_market,
+				];
+		}
+		graphics {
+			monthly_prod_change:		CB_RESULT_IND_PROD_NO_CHANGE;
+			random_prod_change:			CB_RESULT_IND_PROD_NO_CHANGE;
+		}
+	}
