@@ -2,7 +2,7 @@ grf {
 	grfid: "JK\87\A1";
 	name: string(STR_GRF_NAME);
 	desc: string(STR_GRF_DESC);
-	version: 1;
+	version: 2;
 	min_compatible_version: 0;
 	
 	
@@ -10,8 +10,10 @@ grf {
 
 
 cargotable {
-	PASS, MAIL, FOOD, GOOD
+	PASS, MAIL, FOOD, GOOD, BEER, BDMT, SUPP
 }
+
+//add SUPP to fix Martian Industries
 
 spritelayout spr_layout_market {
 	ground {sprite: 1420 ;}
@@ -37,7 +39,7 @@ spritelayout spr_layout_market {
 item(FEAT_INDUSTRYTILES, tile_market) {
 	property {
 		substitute:         			02;
-		accepted_cargos: 				[[PASS, 8], [MAIL, 8], [FOOD, 8], [GOOD, 8]];
+		special_flags: 					bitmask(INDTILE_FLAG_ACCEPT_ALL);
 	}
 	graphics {
 		default: 						spr_layout_market;
@@ -56,7 +58,10 @@ item(FEAT_INDUSTRYTILES, tile_market) {
 											accept_cargo("PASS"),
 											accept_cargo("MAIL"),
 											accept_cargo("FOOD"),
-											accept_cargo("GOOD")
+											accept_cargo("GOOD"),
+											accept_cargo("BEER"),
+											accept_cargo("BDMT"),
+											accept_cargo("SUPP")
 											//produce_cargo("PASS",2),
 										];
 			name:						string(STR_GENERATOR_NAME);
